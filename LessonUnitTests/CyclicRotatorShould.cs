@@ -27,9 +27,9 @@
     {
         public static int[] ShiftArrayRight(int[] arrayToShift, int arrayLength, int shiftRightBy)
         {
-            while (shiftRightBy > arrayLength)
+            if (shiftRightBy > arrayLength)
             {
-                shiftRightBy = arrayLength;
+                shiftRightBy = shiftRightBy % arrayLength;
             }
 
             var end = arrayToShift.TakeLast(shiftRightBy);
