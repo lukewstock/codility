@@ -1,6 +1,5 @@
 ﻿namespace LessonUnitTests
 {
-    using System.Linq;
     using FluentAssertions;
     using NUnit.Framework;
 
@@ -14,26 +13,12 @@
         [TestCase(new[] { 1, 3 }, 2, new [] { 1, 3 })]
         [TestCase(new[] { 1, 3 }, 3, new [] { 3, 1 })]
         [TestCase(new[] { 1, 3 }, 15, new [] { 3, 1 })]
+        [TestCase(new[] { 3, 8, 9, 7, 6 }, 3, new [] { 9, 7, 6, 3, 8 })]
         public void DoNothing_WhenTheLengthOfArrayMatchesNumberToShiftBy(int[] arrayToShift, int shiftRightBy, int[] expectedArray)
         {
             var result = CyclicRotator.ShiftArrayRight(arrayToShift, shiftRightBy);
 
             result.Should().ContainInOrder(expectedArray);
-        }
-    }
-
-    public class CyclicRotator
-    {
-        public static int[] ShiftArrayRight(int[] arrayToShift, int shiftRightBy)
-        {
-            if (shiftRightBy > arrayToShift.Length)
-            {
-                shiftRightBy = shiftRightBy % arrayToShift.Length;
-            }
-
-            var end = arrayToShift.TakeLast(shiftRightBy);
-            var begining = arrayToShift.Take(arrayToShift.Length - shiftRightBy);
-            return end.Concat(begining).ToArray();
         }
     }
 }
