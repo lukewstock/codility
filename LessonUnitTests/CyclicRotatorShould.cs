@@ -14,7 +14,8 @@
         [TestCase(new[] { 1, 3 }, 3, new [] { 3, 1 })]
         [TestCase(new[] { 1, 3 }, 15, new [] { 3, 1 })]
         [TestCase(new[] { 3, 8, 9, 7, 6 }, 3, new [] { 9, 7, 6, 3, 8 })]
-        public void DoNothing_WhenTheLengthOfArrayMatchesNumberToShiftBy(int[] arrayToShift, int shiftRightBy, int[] expectedArray)
+        [TestCase(new int [0], 0, new int [0])]
+        public void ShiftEachElementOfTheArrayToTheRightBySpecifiedAmount(int[] arrayToShift, int shiftRightBy, int[] expectedArray)
         {
             var result = CyclicRotator.ShiftArrayRight(arrayToShift, shiftRightBy);
 

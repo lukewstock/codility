@@ -6,6 +6,11 @@
     {
         public static int[] ShiftArrayRight(int[] arrayToShift, int shiftRightBy)
         {
+            if (arrayToShift.Length == 0)
+            {
+                return arrayToShift;
+            }
+
             if (shiftRightBy >= arrayToShift.Length)
             {
                 shiftRightBy = shiftRightBy % arrayToShift.Length;
