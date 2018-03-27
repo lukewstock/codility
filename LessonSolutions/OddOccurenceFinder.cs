@@ -1,14 +1,20 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Linq;
 
 namespace LessonSolutions
 {
-    public class OddOccurenceFinder
+    public static class OddOccurenceFinder
     {
         public static int FindMismatchingElement(int[] elements)
         {
-            return elements[0];
+
+            var result = elements[0] ^ elements[1];
+
+            for (int i = 2; i < elements.Length; i++)
+            {
+                result = result ^ elements[i];
+            }
+
+            return result;
         }
     }
 }
